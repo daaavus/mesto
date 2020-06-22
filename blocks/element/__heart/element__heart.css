@@ -1,0 +1,7 @@
+.element__heart {
+  background-image: url('../../../images/Vector.png');
+  width: 22px;
+  height: 18px;
+  background-repeat: no-repeat;
+  margin: auto 20px 5px;
+}

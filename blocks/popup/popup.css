@@ -1,0 +1,31 @@
+@import url('./__close-button/popup__close-button.css');
+@import url('./__container/popup__container.css');
+@import url('./__content/popup__content.css');
+@import url('./__name/popup__name.css');
+@import url('./__rank/popup__rank.css');
+@import url('./__save-button/popup__save-button.css');
+@import url('./__title/popup__title.css');
+@import url('./__hidden/popup__hidder.css');
+
+.popup {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1232px;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .popup {
+    height: 1612px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .popup {
+    height: 2910px;
+  }
+}
