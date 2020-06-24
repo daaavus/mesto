@@ -2,12 +2,12 @@
 @import url('./__container/popup__container.css');
 @import url('./__content/popup__content.css');
 @import url('./__name/popup__name.css');
-@import url('./__rank/popup__rank.css');
 @import url('./__save-button/popup__save-button.css');
 @import url('./__title/popup__title.css');
-@import url('./__hidden/popup__hidder.css');
+@import url('./__opened/popup__opened.css');
 
 .popup {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;

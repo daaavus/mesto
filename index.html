@@ -10,80 +10,80 @@
   <div class="page">
 
     <header class="header">
-      <img src="./images/logo.svg" class="header__logo" alt="Логотип Mesto Russia"></img>
+      <img src="./images/logo.svg" class="header__logo" alt="Логотип Mesto Russia">
     </header>
 
     <main class="content">
 
-      <div class="profile">
+      <section class="profile">
         <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
         <div class="profile__info">
           <div class="profile__container">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <div class="profile__edit-button"></div>
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <h5 class="profile__subtitle">Исследователь океана</h5>
         </div>
-        <button class="profile__add-button"></button>
-      </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
 
-      <div class="elements">
+      <section class="elements">
         <div class="element">
-          <img class="element__pic" src="./images/kirill-pershin-1088404-unsplash.jpg">
+          <img class="element__pic" alt="картинка" src="./images/Karachaevsk.jpg">
           <div class="element__descriprion-container">
             <h4 class="element__title">Карачаевск</h4>
-            <div class="element__heart"></div>
+            <button class="element__heart" type="button"></button>
           </div>
         </div>
         <div class="element">
-          <img class="element__pic" src="./images/kirill-pershin-1404681-unsplash (1).png">
+          <img class="element__pic" alt="картинка" src="./images/Elbrus.png">
           <div class="element__descriprion-container">
               <h4 class="element__title">Гора Эльбрус</h4>
-            <div class="element__heart"></div>
+              <button class="element__heart" type="button"></button>
           </div>
         </div>
         <div class="element">
-          <img class="element__pic" src="./images/kirill-pershin-1556355-unsplash.png">
+          <img class="element__pic" alt="картинка" src="./images/Dombai.png">
           <div class="element__descriprion-container">
             <h4 class="element__title">Домбай</h4>
-            <div class="element__heart"></div>
+            <button class="element__heart" type="button"></button>
           </div>
         </div>
         <div class="element">
-          <img class="element__pic" src="./images/kirill-pershin-1404681-unsplash (1).png">
+          <img class="element__pic" alt="картинка" src="./images/Elbrus.png">
           <div class="element__descriprion-container">
             <h4 class="element__title">Гора Эльбрус</h4>
-            <div class="element__heart"></div>
+            <button class="element__heart" type="button"></button>
           </div>
         </div>
         <div class="element">
-          <img class="element__pic" src="./images/kirill-pershin-1556355-unsplash.png">
+          <img class="element__pic" alt="картинка" src="./images/Dombai.png">
           <div class="element__descriprion-container">
             <h4 class="element__title">Домбай</h4>
-            <div class="element__heart"></div>
+            <button class="element__heart" type="button"></button>
           </div>
         </div>
         <div class="element">
-          <img class="element__pic" src="./images/kirill-pershin-1088404-unsplash.jpg">
+          <img class="element__pic" alt="картинка" src="./images/Karachaevsk.jpg">
           <div class="element__descriprion-container">
             <h4 class="element__title">Карачаево-Черкессия</h4>
-            <div class="element__heart"></div>
+            <button class="element__heart" type="button"></button>
           </div>
         </div>
-      </div>
+      </section>
     </main>
 
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup__hidden">
-      <form action="" class="popup__container">
-        <button class="popup__close-button"></button>
+    <div class="popup">
+      <form class="popup__container">
+        <button class="popup__close-button" type="button"></button>
         <fieldset class="popup__content">
           <p class="popup__title">Редактировать профиль</p>
-          <input class="popup__name" type="text">
-          <input class="popup__rank" type="text">
+          <input class="popup__name" type="text" name="name" id="nameInput">
+          <input class="popup__name" type="text" name="job" id="jobInput">
         </fieldset>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
@@ -91,8 +91,8 @@
 
   </div>
 
-</body>
+  <script src="./scripts/script.js"></script>
 
-<script src="./scripts/script.js"></script>
+</body>
 
 </html>

@@ -7,3 +7,5 @@
 @import url('../blocks/body/body.css');
 @import url('../blocks/element/element.css');
 @import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/__opened/popup__opened.css');
+@import url('../vendor/fonts/fonts.css');
