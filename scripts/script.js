@@ -18,14 +18,18 @@ function openPopup(event){
 
 editBtn.addEventListener("click", openPopup)
 
-closeBtn.addEventListener("click", function(event){
+function closePopup(event){
   event.preventDefault();
   popup.classList.remove("popup__opened");
-});
+}
 
-saveBtn.addEventListener("click", function(event){
+closeBtn.addEventListener("click", closePopup);
+
+function savePopup(event){
   event.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   popup.classList.remove("popup__opened");
-});
+}
+
+saveBtn.addEventListener("click", savePopup);
