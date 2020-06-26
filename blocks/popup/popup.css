@@ -4,8 +4,7 @@
 @import url('./__name/popup__name.css');
 @import url('./__save-button/popup__save-button.css');
 @import url('./__title/popup__title.css');
-@import url('./__opened/popup__opened.css');
-@import url('./__wtf-container/popup__wtf-container.css');
+@import url('./_opened/popup_opened.css');
 
 .popup {
   display: none;
