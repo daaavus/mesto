@@ -1,0 +1,11 @@
+.element__musorka {
+  position: relative;
+  bottom: 320px;
+  left: 250px;
+  width: 18px;
+  height: 20px;
+}
+
+.element__musorka:hover {
+  opacity: .6;
+}
