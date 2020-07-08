@@ -3,6 +3,7 @@
 @import url('./__heart/element__heart.css');
 @import url('./__descriprion-container/element__descriprion-container.css');
 @import url('./__musorka/element__musorka.css');
+@import url('./__heart/_active/element__heart_active.css');
 
 .element {
   margin: auto;

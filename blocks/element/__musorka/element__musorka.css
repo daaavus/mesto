@@ -1,9 +1,10 @@
 .element__musorka {
   position: relative;
   bottom: 320px;
-  left: 250px;
+  left: 213px;
   width: 18px;
   height: 20px;
+  cursor: pointer;
 }
 
 .element__musorka:hover {

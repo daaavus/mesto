@@ -29,61 +29,8 @@
 
       <section class="elements">
 
-        <div class="element">
-          <img class="element__pic" alt="картинка" src="./images/karachaevsk.jpg" id="element-image">
-          <div class="element__descriprion-container">
-            <h4 class="element__title">Карачаевск</h4>
-            <button class="element__heart" type="button"></button>
-          </div>
-          <img class="element__musorka" alt="удалить карточку" src="./images/pomoika.png">
-        </div>
-
-        <div class="element">
-          <img class="element__pic" alt="картинка" src="./images/elbrus.png" id="element-image">
-          <div class="element__descriprion-container">
-              <h4 class="element__title">Гора Эльбрус</h4>
-              <button class="element__heart" type="button"></button>
-          </div>
-          <img class="element__musorka" alt="удалить карточку" src="./images/pomoika.png">
-        </div>
-
-        <div class="element">
-          <img class="element__pic" alt="картинка" src="./images/dombai.png" id="element-image">
-          <div class="element__descriprion-container">
-            <h4 class="element__title">Домбай</h4>
-            <button class="element__heart" type="button"></button>
-          </div>
-          <img class="element__musorka" alt="удалить карточку" src="./images/pomoika.png">
-        </div>
-
-        <div class="element">
-          <img class="element__pic" alt="картинка" src="./images/elbrus.png" id="element-image">
-          <div class="element__descriprion-container">
-           <h4 class="element__title">Гора Эльбрус</h4>
-            <button class="element__heart" type="button"></button>
-          </div>
-           <img class="element__musorka" alt="удалить карточку" src="./images/pomoika.png">
-        </div>
-
-        <div class="element">
-          <img class="element__pic" alt="картинка" src="./images/dombai.png" id="element-image">
-          <div class="element__descriprion-container">
-             <h4 class="element__title">Домбай</h4>
-            <button class="element__heart" type="button"></button>
-          </div>
-          <img class="element__musorka" alt="удалить карточку" src="./images/pomoika.png">
-        </div>
-
-        <div class="element">
-          <img class="element__pic" alt="картинка" src="./images/karachaevsk.jpg" id="element-image">
-          <div class="element__descriprion-container">
-            <h4 class="element__title">Карачаево-Черкессия</h4>
-            <button class="element__heart" type="button"></button>
-          </div>
-          <img class="element__musorka" alt="удалить карточку" src="./images/pomoika.png">
-        </div>
-
       </section>
+
     </main>
 
     <footer class="footer">
@@ -102,7 +49,28 @@
       </form>
     </div>
 
+    <div class="elements__popup">
+      <form class="popup__container">
+        <button class="popup__close-elements-button" type="button"></button>
+        <fieldset class="popup__content">
+          <p class="popup__title">Новое место</p>
+          <input class="popup__mesto" required="" value="" placeholder="Название" type="text" name="mesto">
+          <input class="popup__link" required="" value="" placeholder="Ссылка на картинку" type="text" name="link">
+        </fieldset>
+        <button class="popup__elements-save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+
   </div>
+
+  <template id="card-template">
+    <div class="element">
+      <img class="element__pic" alt="картинка" src="123">
+      <h4 class="element__title"></h4>
+      <button class="element__heart" type="button"></button>
+      <img class="element__musorka" alt="удалить карточку" src="./images/pomoika.png">
+    </div>
+  </template>
 
   <script src="./scripts/script.js"></script>
 
