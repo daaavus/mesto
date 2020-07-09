@@ -5,6 +5,11 @@
   width: 18px;
   height: 20px;
   cursor: pointer;
+  background-image: url('../../../images/pomoika.png');
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: unset;
 }
 
 .element__musorka:hover {
