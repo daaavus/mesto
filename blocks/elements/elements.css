@@ -1,4 +1,5 @@
 @import url('./__popup/elements__popup.css');
+@import url('./__popup-container/elements__popup-container.css');
 
 .elements {
   margin: 50px auto 0 auto;
@@ -7,6 +8,8 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 18px;
+  list-style: none;
+  padding: 0;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
