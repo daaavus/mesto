@@ -23,16 +23,8 @@ const jobInput = document.querySelector('#jobInput');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
 
-function togglePopup(popop){
+function togglePopup(popup){
   popup.classList.toggle("popup_opened");
-}
-
-function togglePopup(elementsPopup){
-  elementsPopup.classList.toggle("popup_opened");
-}
-
-function togglePopup(imagePopup){
-  imagePopup.classList.toggle("popup_opened");
 }
 
 function openPopup(){
@@ -104,7 +96,6 @@ function addCard(item){
   card.querySelector('.element__musorka').addEventListener('click', deleteCard);
 
   function renderCard(event) {
-    event.target.closest('.popup__img');
     imagePopupImage.src = item.link;
     imagePopupImage.alt = item.name;
     imagePopupCaption.textContent = item.name;
@@ -115,14 +106,6 @@ function addCard(item){
 
   cardsContainer.prepend(card);
 }
-
-function renderCard(item) {
-  event.target.closest('.popup__img');
-  imagePopupImage.src = item.link;
-  imagePopupImage.alt = item.name;
-  imagePopupCaption.textContent = item.name;
-  togglePopup(imagePopup);
-};
 
 initialCards.forEach(item => {
   addCard(item);
