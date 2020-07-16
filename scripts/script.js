@@ -124,7 +124,7 @@ elementsPopupSave.addEventListener('submit', event => {
     name: mestoInput.value,
     link: linkInput.value
   };
-  render(item);
+  render(cardItem);
   togglePopup(elementsPopup);
 });
 
