@@ -38,26 +38,40 @@
     </footer>
 
     <div class="popup">
-      <form class="popup__container">
+      <form class="popup__container" novalidate>
         <button class="popup__close-button" type="button"></button>
         <fieldset class="popup__content">
           <p class="popup__title">Редактировать профиль</p>
-          <input class="popup__name" type="text" name="name" id="nameInput">
-          <input class="popup__name" type="text" name="job" id="jobInput">
+
+          <input class="popup__name input" type="text" name="name" id="input"
+          minlength="2" maxlength="40" pattern="^[a-zA-Z-А-Яа-яЁё\s]+$" required>
+          <span id="input-error" class="input_error"></span>
+
+          <input class="popup__info input" type="text" name="job" id="input" minlength="2"
+          maxlength="200" required>
+          <span id="input-error" class="input_error"></span>
+
         </fieldset>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
 
     <div class="elements__popup">
-      <form class="elements__popup-container">
+      <form class="popup__container elements__popup-container" novalidate>
         <button class="popup__close-elements-button" type="button"></button>
         <fieldset class="popup__content">
           <p class="popup__title">Новое место</p>
-          <input class="popup__mesto" required="" value="" placeholder="Название" type="text" name="mesto">
-          <input class="popup__link" required="" value="" placeholder="Ссылка на картинку" type="text" name="link">
+
+          <input class="popup__mesto input" required="" value="" placeholder="Название"
+          type="text" name="mesto" minlength="1" maxlength="30" required>
+          <span id="input-error" class="input_error"></span>
+
+          <input class="popup__link input" required="" value="" placeholder="Ссылка на картинку"
+          type="text" name="link" pattern="(http|https)?://.+">
+          <span id="input-error" class="input_error"></span>
+
         </fieldset>
-        <button class="popup__elements-save-button" type="submit">Сохранить</button>
+        <button class="popup__elements-save-button popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
 
@@ -83,6 +97,7 @@
   </template>
 
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 
 </body>
 

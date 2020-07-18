@@ -1,9 +1,9 @@
-.popup__name:focus {
+.popup__info:focus {
   outline-color: #0f44b8;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .popup__name {
+  .popup__info {
     width: 260px;
     margin: 0 auto 0 20px;
   }

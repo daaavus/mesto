@@ -11,6 +11,7 @@ const mestoInput = elementsPopup.querySelector('.popup__mesto');
 const linkInput = elementsPopup.querySelector('.popup__link');
 const popupSave = popup.querySelector('.popup__container');
 const elementsPopupSave = elementsPopup.querySelector('.elements__popup-container');
+const input = document.querySelector('.input')
 
 const imagePopup = document.querySelector('.image-popup');
 const imagePopupCloseBtn = imagePopup.querySelector('.image-popup__close-button');
@@ -18,8 +19,8 @@ const imagePopupImage = imagePopup.querySelector('.image-popup__image');
 const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 const imagePopupContainer = imagePopup.querySelector('.image-popup__container');
 
-const nameInput = document.querySelector('#nameInput');
-const jobInput = document.querySelector('#jobInput');
+const nameInput = document.querySelector('.popup__name');
+const jobInput = document.querySelector('.popup__info');
 
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
@@ -53,6 +54,11 @@ const initialCards = [
 
 function togglePopup(popup){
   popup.classList.toggle("popup_opened");
+  document.addEventListener('keydown', function(event){
+    if(event.key = 'Escape'){
+      popup.classList.remove('popup_opened')
+    }
+  })
 }
 
 function openPopup(){
@@ -129,3 +135,21 @@ elementsPopupSave.addEventListener('submit', event => {
 });
 
 imagePopupCloseBtn.addEventListener('click', () => togglePopup(imagePopup));
+
+popup.addEventListener("click", function(event) {
+  if (event.target == this) {
+    togglePopup(popup)
+  }
+});
+
+elementsPopup.addEventListener("click", function(event) {
+  if (event.target == this) {
+    togglePopup(elementsPopup)
+  }
+});
+
+imagePopup.addEventListener("click", function(event) {
+  if (event.target == this) {
+    togglePopup(imagePopup)
+  }
+});

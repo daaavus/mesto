@@ -1,0 +1,22 @@
+@import url('./_error/input_error.css');
+
+.input {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin: 0 0 0 36px;
+  padding: 0;
+  width: 358px;
+  height: 30px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #bcbcc4;
+}
+
+.input:nth-of-type(2){
+  margin-top: 10px;
+}

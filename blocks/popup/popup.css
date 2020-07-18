@@ -9,6 +9,8 @@
 @import url('./__elements-save-button/popup__elements-save-button.css');
 @import url('./__mesto/popup__mesto.css');
 @import url('./__link/popup__link.css');
+@import url('./__info/popup__info.css');
+@import url('./__save-button/_disabled/popup__save-button_disabled.css');
 
 .popup {
   display: flex;
