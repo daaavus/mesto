@@ -74,8 +74,9 @@ function openFirstPopup(){
   jobInput.value = profileJob.textContent;
   openPopup(popup);
   saveBtn.classList.remove('popup__save-button_disabled')
-  popupSave.addEventListener('submit', savePopup)
 }
+
+popupSave.addEventListener('submit', savePopup)
 
 editBtn.addEventListener("click", openFirstPopup)
 
@@ -89,10 +90,9 @@ function savePopup(event){
 }
 
 addBtn.addEventListener('click', () => openPopup(elementsPopup));
+
 addBtn.addEventListener('click', () => {
   elementsPopupSave.reset();
-  elementsPopupSave.removeEventListener('submit', saveElementsPopup)
-  elementsSaveBtn.classList.add('popup__save-button_disabled')
 });
 
 closeElementsBtn.addEventListener('click', () => closePopup(elementsPopup));
