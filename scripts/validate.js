@@ -1,3 +1,10 @@
+const config = {
+  formElement: '.popup__container',
+  inputElement: '.input',
+  buttonElement: '.popup__save-button',
+  elementsButtonElement: '.elements__popup-save-button'
+}
+
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.textContent = errorMessage;
@@ -62,4 +69,4 @@ function toggleButtonState(inputList, buttonElement, elementsButtonElement){
   }
 }
 
-enableValidation();
+enableValidation(config);
