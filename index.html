@@ -43,13 +43,13 @@
         <fieldset class="popup__content">
           <p class="popup__title">Редактировать профиль</p>
 
-          <input class="popup__name input" type="text" id="input"
+          <input class="popup__name input" type="text" id='input-name'
           minlength="2" maxlength="40" pattern="^[a-zA-Z-А-Яа-яЁё\s]+$" required>
-          <span id="input-error"></span>
+          <span class='input-error' id="input-name-error"></span>
 
-          <input class="popup__info input" type="text" id="input" minlength="2"
+          <input class="popup__info input" type="text" id ='input-job' minlength="2"
           maxlength="200" required>
-          <span id="input-error"></span>
+          <span class='input-error' id="input-job-error"></span>
 
         </fieldset>
         <button class="popup__save-button" type="submit">Сохранить</button>
@@ -62,16 +62,16 @@
         <fieldset class="popup__content">
           <p class="popup__title">Новое место</p>
 
-          <input class="popup__mesto input" required="" value="" placeholder="Название"
-          type="text" name="mesto" minlength="1" maxlength="30" required>
-          <span id="input-error"></span>
+          <input class="popup__mesto input" placeholder="Название"
+          type="text" minlength="1" maxlength="30" id='input-place' required>
+          <span class='input-error' id="input-place-error"></span>
 
-          <input class="popup__link input" required="" value="" placeholder="Ссылка на картинку"
-          type="text" name="link" pattern="(http|https)?://.+">
-          <span id="input-error"></span>
+          <input class="popup__link input" placeholder="Ссылка на картинку"
+          type='url' id='input-url' required>
+          <span class='input-error' id="input-url-error"></span>
 
         </fieldset>
-        <button class="popup__elements-save-button popup__save-button" type="submit">Сохранить</button>
+        <button class="popup__save-button popup__elements-save-button" type="submit">Сохранить</button>
       </form>
     </div>
 

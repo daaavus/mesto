@@ -4,13 +4,13 @@ const closeBtn = document.querySelector('.popup__close-button');
 const saveBtn = document.querySelector('.popup__save-button');
 const elementsPopup = document.querySelector('.elements__popup');
 const cardsContainer = document.querySelector('.elements');
-const saveElementBtn = elementsPopup.querySelector('.popup__elements-save-button');
 const addBtn = document.querySelector('.profile__add-button');
 const closeElementsBtn = elementsPopup.querySelector('.popup__close-elements-button');
 const mestoInput = elementsPopup.querySelector('.popup__mesto');
 const linkInput = elementsPopup.querySelector('.popup__link');
 const popupSave = popup.querySelector('.popup__container');
 const elementsPopupSave = elementsPopup.querySelector('.elements__popup-container');
+const elementsSaveBtn = elementsPopup.querySelector('.popup__elements-save-button')
 
 const imagePopup = document.querySelector('.image-popup');
 const imagePopupCloseBtn = imagePopup.querySelector('.image-popup__close-button');
@@ -73,6 +73,8 @@ function openFirstPopup(){
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(popup);
+  saveBtn.classList.remove('popup__save-button_disabled')
+  popupSave.addEventListener('submit', savePopup)
 }
 
 editBtn.addEventListener("click", openFirstPopup)
@@ -86,9 +88,12 @@ function savePopup(event){
   closePopup(popup);
 }
 
-popupSave.addEventListener('submit', savePopup)
-
 addBtn.addEventListener('click', () => openPopup(elementsPopup));
+addBtn.addEventListener('click', () => {
+  elementsPopupSave.reset();
+  elementsPopupSave.removeEventListener('submit', saveElementsPopup)
+  elementsSaveBtn.classList.add('popup__save-button_disabled')
+});
 
 closeElementsBtn.addEventListener('click', () => closePopup(elementsPopup));
 
@@ -132,7 +137,7 @@ initialCards.forEach(item => {
   render(item);
 });
 
-elementsPopupSave.addEventListener('submit', event => {
+const saveElementsPopup = (event) => {
   event.preventDefault();
   const cardItem = {
     name: mestoInput.value,
@@ -140,7 +145,9 @@ elementsPopupSave.addEventListener('submit', event => {
   };
   render(cardItem);
   closePopup(elementsPopup);
-});
+};
+
+elementsPopupSave.addEventListener('submit', saveElementsPopup)
 
 imagePopupCloseBtn.addEventListener('click', () => closePopup(imagePopup));
 

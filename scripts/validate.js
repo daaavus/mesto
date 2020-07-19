@@ -1,13 +1,17 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('input_error');
+  errorElement.classList.add('input_error_active');
+  popupSave.removeEventListener('submit', savePopup)
+  elementsPopupSave.removeEventListener('submit', saveElementsPopup)
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  errorElement.classList.remove('input_error');
+  errorElement.classList.remove('input_error_active');
   errorElement.textContent = '';
+  popupSave.addEventListener('submit', savePopup)
+  elementsPopupSave.addEventListener('submit', saveElementsPopup)
 };
 
 const checkInputValidity = (formElement, inputElement) => {
@@ -45,7 +49,6 @@ const enableValidation = () => {
   });
 };
 
-enableValidation();
  function hasInvalidInput (inputList){
    return inputList.some((inputElement) => {
   return !inputElement.validity.valid;
@@ -59,3 +62,5 @@ function toggleButtonState(inputList, buttonElement){
   buttonElement.classList.remove('popup__save-button_disabled');
   }
 }
+
+enableValidation();

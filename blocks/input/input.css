@@ -1,4 +1,4 @@
-@import url('./_error/input_error.css');
+@import url('./_error/input_error_active.css');
 
 .input {
   font-family: Inter, Arial, Helvetica, sans-serif;
@@ -26,4 +26,8 @@
     width: 240px;
     margin-left: 20px;
   }
+}
+
+.input:focus{
+  outline: none;
 }
