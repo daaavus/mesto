@@ -49,13 +49,13 @@ enableValidation();
  function hasInvalidInput (inputList){
    return inputList.some((inputElement) => {
   return !inputElement.validity.valid;
-});
- }
+  });
+}
 
 function toggleButtonState(inputList, buttonElement){
   if (hasInvalidInput(inputList)) {
   buttonElement.classList.add('popup__save-button_disabled');
-} else {
+  } else {
   buttonElement.classList.remove('popup__save-button_disabled');
-}
+  }
 }

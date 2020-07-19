@@ -1,4 +1,4 @@
-.element__musorka {
+.element__trash {
   position: relative;
   bottom: 320px;
   left: 213px;
@@ -12,6 +12,6 @@
   background-color: unset;
 }
 
-.element__musorka:hover {
+.element__trash:hover {
   opacity: .6;
 }
