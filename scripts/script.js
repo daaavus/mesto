@@ -76,8 +76,6 @@ function openFirstPopup(){
   saveBtn.classList.remove('popup__save-button_disabled')
 }
 
-popupSave.addEventListener('submit', savePopup)
-
 editBtn.addEventListener("click", openFirstPopup)
 
 closeBtn.addEventListener('click', () => closePopup(popup));
@@ -88,6 +86,8 @@ function savePopup(event){
   profileJob.textContent = jobInput.value;
   closePopup(popup);
 }
+
+popupSave.addEventListener('submit', savePopup)
 
 addBtn.addEventListener('click', () => openPopup(elementsPopup));
 

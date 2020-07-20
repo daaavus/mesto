@@ -8,3 +8,11 @@
 .popup__save-button_disabled:hover {
   opacity: 1;
 }
+
+.popup__save-button_disabled::selection{
+  pointer-events: none;
+}
+
+.popup__save-button_disabled:scope{
+  pointer-events: none;
+}
