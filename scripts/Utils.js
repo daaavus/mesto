@@ -6,6 +6,8 @@ const nameInput = document.querySelector('.popup__name');
 const jobInput = document.querySelector('.popup__info');
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
+const imagePopupImage = imagePopup.querySelector('.image-popup__image');
+const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened')
@@ -15,6 +17,12 @@ const closePopup = (popup) => {
 const openPopup = (popup) => {
   popup.classList.add('popup_opened')
   document.addEventListener('keydown', closePopupByEsc)
+}
+
+function setValidityForm () {
+  const elementsSaveBtn = document.querySelector('.popup__elements-save-button')
+  elementsSaveBtn.setAttribute('disabled', true);
+  elementsSaveBtn.classList.add('popup__save-button_disabled');
 }
 
 const closePopupByEsc = (event) => {
@@ -39,5 +47,5 @@ function savePopup(event){
   closePopup(popup);
 }
 
-export { popup, openPopup, closePopupByEsc, imagePopup, elementsPopup,
-   closePopup, saveBtn, openFirstPopup, savePopup }
+export { popup, openPopup, closePopupByEsc, imagePopup, elementsPopup, setValidityForm,
+   closePopup, saveBtn, openFirstPopup, savePopup, imagePopupImage, imagePopupCaption }

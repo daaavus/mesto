@@ -1,15 +1,15 @@
-import { Card } from './Card.js'
+import { Card } from './Card.js';
 
-import { popup, openPopup, closePopupByEsc, imagePopup, elementsPopup, closePopup, saveBtn, openFirstPopup, savePopup } from './Utils.js'
+import { popup, imagePopup, elementsPopup, closePopup, openFirstPopup, savePopup, openPopup, setValidityForm } from './Utils.js';
 
-import { FormValidator, validationConfig } from './FormValidator.js'
+import { validationConfig, FormValidator } from './FormValidator.js'
 
 const editBtn = document.querySelector('.profile__edit-button');
 const closeBtn = document.querySelector('.popup__close-button');
 const cardsContainer = document.querySelector('.elements');
-const addBtn = document.querySelector('.profile__add-button');
 const closeElementsBtn = elementsPopup.querySelector('.popup__close-elements-button');
 const mestoInput = elementsPopup.querySelector('.popup__mesto');
+const addBtn = document.querySelector('.profile__add-button')
 const linkInput = elementsPopup.querySelector('.popup__link');
 const popupSave = popup.querySelector('.popup__container');
 const elementsPopupSave = elementsPopup.querySelector('.elements__popup-container');
@@ -49,6 +49,7 @@ closeBtn.addEventListener('click', () => closePopup(popup));
 popupSave.addEventListener('submit', savePopup)
 
 addBtn.addEventListener('click', () => openPopup(elementsPopup));
+addBtn.addEventListener('click', setValidityForm);
 
 addBtn.addEventListener('click', () => {
   elementsPopupSave.reset();
@@ -57,7 +58,7 @@ addBtn.addEventListener('click', () => {
 closeElementsBtn.addEventListener('click', () => closePopup(elementsPopup));
 
 function render(item) {
-  const card = new Card(item);
+  const card = new Card(item, '#card-template');
   const cardElement = card.generateCard();
   cardsContainer.prepend(cardElement);
 }
@@ -95,7 +96,14 @@ imagePopup.addEventListener("click", function(event) {
 });
 
 initialCards.forEach((item) => {
-  const card = new Card(item);
-  const cardElement = card.generateCard();
-  cardsContainer.prepend(cardElement);
+  render(item)
 });
+
+const validationFormSelector = document.querySelector('.popup__container')
+const imageValidationFormSelector = document.querySelector('.elements__popup-container')
+
+const formAddValidation = new FormValidator(validationConfig, validationFormSelector)
+formAddValidation.enableValidation()
+
+const formImageAddValidation = new FormValidator(validationConfig, imageValidationFormSelector)
+formImageAddValidation.enableValidation()

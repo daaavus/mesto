@@ -1,4 +1,4 @@
-import { openPopup } from './Utils.js'
+import { openPopup, imagePopupImage, imagePopupCaption, imagePopup } from './Utils.js'
 
 export class Card {
   constructor (data, cardSelector) {
@@ -10,7 +10,7 @@ export class Card {
 
   _getTemplate() {
     const cardElement = document
-    .querySelector('#card-template')
+    .querySelector(this._cardSelector)
     .content
     .querySelector('.element')
     .cloneNode(true);
@@ -27,9 +27,6 @@ export class Card {
   }
 
   _handleImageClick () {
-    const imagePopup = document.querySelector('.image-popup');
-    const imagePopupImage = imagePopup.querySelector('.image-popup__image');
-    const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
     imagePopupImage.src = this._image
     imagePopupImage.alt = this._text
     imagePopupCaption.textContent = this._text
@@ -49,7 +46,6 @@ export class Card {
     this._element.querySelector('.element__pic').addEventListener('click', () => {
       this._handleImageClick();
     })
-
   }
 
   generateCard () {
