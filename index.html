@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
 <body class="body">
   <div class="page">
@@ -39,7 +38,7 @@
 
     <div class="popup">
       <form class="popup__container" novalidate>
-        <button class="popup__close-button" type="button"></button>
+        <button class="popup__close-button" type="button" id="popup_close"></button>
         <fieldset class="popup__content">
           <p class="popup__title">Редактировать профиль</p>
 
@@ -58,7 +57,7 @@
 
     <div class="elements__popup">
       <form class="popup__container elements__popup-container" novalidate>
-        <button class="popup__close-elements-button" type="button"></button>
+        <button class="popup__close-elements-button" type="button" id="popup_close"></button>
         <fieldset class="popup__content">
           <p class="popup__title">Новое место</p>
 
@@ -77,7 +76,7 @@
 
     <div class="image-popup">
       <form class="image-popup__container">
-        <button type="button" class="image-popup__close-button"></button>
+        <button type="button" class="image-popup__close-button" id="popup_close"></button>
         <figure class="image-popup__figure">
             <img class="image-popup__image" src="#" alt="картинка">
             <figcaption class="image-popup__caption"></figcaption>
@@ -95,8 +94,6 @@
       <button class="element__trash" type="button"></button>
     </li>
   </template>
-
-  <script src="./scripts/index.js" type='module'></script>
 
 </body>
 

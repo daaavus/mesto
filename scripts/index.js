@@ -4,6 +4,10 @@ import { popup, imagePopup, elementsPopup, closePopup, openFirstPopup, savePopup
 
 import { validationConfig, FormValidator } from './FormValidator.js'
 
+import Popup from './Popup.js'
+
+import '../pages/index.css';
+
 const editBtn = document.querySelector('.profile__edit-button');
 const closeBtn = document.querySelector('.popup__close-button');
 const cardsContainer = document.querySelector('.elements');
@@ -107,3 +111,5 @@ formAddValidation.enableValidation()
 
 const formImageAddValidation = new FormValidator(validationConfig, imageValidationFormSelector)
 formImageAddValidation.enableValidation()
+
+const aaa = new Popup(popup)
