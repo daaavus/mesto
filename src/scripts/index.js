@@ -8,6 +8,8 @@ import Popup from './Popup.js'
 
 import '../pages/index.css';
 
+import Section from './Section.js'
+
 const editBtn = document.querySelector('.profile__edit-button');
 const closeBtn = document.querySelector('.popup__close-button');
 const cardsContainer = document.querySelector('.elements');
@@ -99,10 +101,6 @@ imagePopup.addEventListener("click", function(event) {
   }
 });
 
-initialCards.forEach((item) => {
-  render(item)
-});
-
 const validationFormSelector = document.querySelector('.popup__container')
 const imageValidationFormSelector = document.querySelector('.elements__popup-container')
 
@@ -112,4 +110,15 @@ formAddValidation.enableValidation()
 const formImageAddValidation = new FormValidator(validationConfig, imageValidationFormSelector)
 formImageAddValidation.enableValidation()
 
-const aaa = new Popup(popup)
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '#card-template');
+    const cardElement = card.generateCard();
+    cardList.addItem(cardElement)
+    }
+  },
+cardsContainer
+)
+
+cardList.renderItems()
