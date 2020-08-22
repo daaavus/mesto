@@ -1,14 +1,21 @@
-import { Card } from './Card.js';
+import Card from './Card.js';
 
-import { popup, imagePopup, elementsPopup, closePopup, openFirstPopup, savePopup, openPopup, setValidityForm } from './Utils.js';
+import { popup, imagePopup, elementsPopup, setValidityForm, profileJob, profileName, nameInput, jobInput } from './Utils.js';
 
 import { validationConfig, FormValidator } from './FormValidator.js'
 
-import Popup from './Popup.js'
+import PopupWithImage from './PopupWithImage.js'
 
 import '../pages/index.css';
 
 import Section from './Section.js'
+
+import Popup from './Popup.js';
+
+import PopupWithForm from './PopupWithForm.js';
+
+import UserInfo from './UserInfo.js';
+import { name } from 'file-loader';
 
 const editBtn = document.querySelector('.profile__edit-button');
 const closeBtn = document.querySelector('.popup__close-button');
@@ -48,20 +55,11 @@ const initialCards = [
   }
 ];
 
-editBtn.addEventListener("click", openFirstPopup)
-
-closeBtn.addEventListener('click', () => closePopup(popup));
-
-popupSave.addEventListener('submit', savePopup)
-
-addBtn.addEventListener('click', () => openPopup(elementsPopup));
 addBtn.addEventListener('click', setValidityForm);
 
 addBtn.addEventListener('click', () => {
   elementsPopupSave.reset();
 });
-
-closeElementsBtn.addEventListener('click', () => closePopup(elementsPopup));
 
 function render(item) {
   const card = new Card(item, '#card-template');
@@ -76,30 +74,10 @@ const saveElementsPopup = (event) => {
     link: linkInput.value
   };
   render(cardItem);
-  closePopup(elementsPopup);
+  //тут должен закрываться второй попап;
 };
 
 elementsPopupSave.addEventListener('submit', saveElementsPopup)
-
-imagePopupCloseBtn.addEventListener('click', () => closePopup(imagePopup));
-
-popup.addEventListener("click", function(event) {
-  if (event.target == this) {
-    closePopup(popup)
-  }
-});
-
-elementsPopup.addEventListener("click", function(event) {
-  if (event.target == this) {
-    closePopup(elementsPopup)
-  }
-});
-
-imagePopup.addEventListener("click", function(event) {
-  if (event.target == this) {
-    closePopup(imagePopup)
-  }
-});
 
 const validationFormSelector = document.querySelector('.popup__container')
 const imageValidationFormSelector = document.querySelector('.elements__popup-container')
@@ -113,7 +91,11 @@ formImageAddValidation.enableValidation()
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#card-template');
+    const card = new Card(item, '#card-template', () => {
+      const popupWithImage = new PopupWithImage(imagePopup, item)
+      popupWithImage.open(item)
+      popupWithImage.setEventListeners()
+    });
     const cardElement = card.generateCard();
     cardList.addItem(cardElement)
     }
@@ -122,3 +104,35 @@ cardsContainer
 )
 
 cardList.renderItems()
+
+const userInfo = new UserInfo({profileName, profileJob})
+
+export const popupWithFormProfile = new PopupWithForm(popup, {
+  handleFormSubmit: () => {
+    userInfo.setUserInfo(nameInput, jobInput);
+    popupWithFormProfile.close();
+  }
+})
+
+popupWithFormProfile.setEventListeners()
+
+function handleEditClick () {
+  popupWithFormProfile.open();
+  const data = userInfo.getUserInfo();
+  nameInput.value = data.name;
+  jobInput.value = data.info;
+}
+
+editBtn.addEventListener('click', handleEditClick)
+
+const popupWithFormCards = new PopupWithForm(elementsPopup, {
+  handleFormSubmit: () => {
+
+  }
+})
+
+popupWithFormCards.setEventListeners()
+
+addBtn.addEventListener('click', () => {
+  popupWithFormCards.open()
+})

@@ -1,10 +1,12 @@
-import { openPopup, imagePopupImage, imagePopupCaption, imagePopup } from './Utils.js'
+import { imagePopupImage, imagePopupCaption, imagePopup} from './Utils.js'
+import PopupWithImage from './PopupWithImage.js';
 
-export class Card {
+export default class Card {
   constructor (data, cardSelector, handleCardClick) {
     this._text = data.name;
     this._image = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick
 
   }
 
@@ -26,13 +28,6 @@ export class Card {
     this._element.remove();
   }
 
-  _handleImageClick () {
-    imagePopupImage.src = this._image
-    imagePopupImage.alt = this._text
-    imagePopupCaption.textContent = this._text
-    openPopup(imagePopup);
-  };
-
   _setEventListeners () {
 
     this._element.querySelector('.element__heart').addEventListener('click', () => {
@@ -44,7 +39,7 @@ export class Card {
     })
 
     this._element.querySelector('.element__pic').addEventListener('click', () => {
-      this._handleImageClick();
+      this._handleCardClick()
     })
   }
 

@@ -1,3 +1,5 @@
+import { bind } from "file-loader";
+
 export default class Popup {
   constructor (popupSelector) {
     this._popupSelector = popupSelector;
@@ -19,8 +21,8 @@ export default class Popup {
     }
   }
 
-  _handleOverlayClose(event) {
-    if (event.target == this) {
+  _handleOverlayClose = (event) => {
+    if (event.target.classList.contains('popup_opened')) {
       this.close()
     }
   }
@@ -29,6 +31,6 @@ export default class Popup {
     this._popupSelector.querySelector('#popup_close').addEventListener('click', () => {
       this.close()
     })
-    this._popupSelector.addEventListener('click', _handleOverlayClose())
+    this._popupSelector.addEventListener('click', this._handleOverlayClose)
   }
 }
