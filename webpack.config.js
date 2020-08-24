@@ -5,7 +5,7 @@ const { Template } = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-  entry: "./src/scripts/index.js",
+  entry: "./src/pages/index.js",
   mode: "production",
   output: {
     filename: "main.js",

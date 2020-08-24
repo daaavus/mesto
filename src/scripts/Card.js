@@ -1,6 +1,3 @@
-import { imagePopupImage, imagePopupCaption, imagePopup} from './Utils.js'
-import PopupWithImage from './PopupWithImage.js';
-
 export default class Card {
   constructor (data, cardSelector, handleCardClick) {
     this._text = data.name;
@@ -25,6 +22,7 @@ export default class Card {
   }
 
   _handleTrashClick () {
+
     this._element.remove();
   }
 
@@ -39,6 +37,7 @@ export default class Card {
     })
 
     this._element.querySelector('.element__pic').addEventListener('click', () => {
+
       this._handleCardClick()
     })
   }

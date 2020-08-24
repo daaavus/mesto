@@ -1,5 +1,4 @@
 import Popup from './Popup.js'
-import { jobInput, nameInput } from './Utils.js';
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, {handleFormSubmit}) {
@@ -9,13 +8,12 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues() {
     this._inputList = this._popupSelector.querySelectorAll('.input');
-    this._inputInfoArray = {  };
+    this._inputInfoArray = {};
 
     this._inputList.forEach((item) => {
-      this._inputInfoArray[item.name] = input;
+      this._inputInfoArray[item.name] = item.value;
     });
 
-    console.log(this._inputInfoArray)
     return this._inputInfoArray;
   }
 

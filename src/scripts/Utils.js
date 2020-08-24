@@ -9,7 +9,15 @@ export const profileJob = document.querySelector('.profile__subtitle');
 const imagePopupImage = imagePopup.querySelector('.image-popup__image');
 const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 
-function setValidityForm () {
+export const validationConfig = {
+  formElement: '.popup__container',
+  inputElement: '.input',
+  inputElementError: 'input_error_active',
+  buttonElement: '.popup__save-button',
+  buttonElementInactive: 'popup__save-button_disabled'
+}
+
+function setValidityForm () { //я тут присваиваю кнопке свойства при открытии второго попапа, это не валидация :)
   const elementsSaveBtn = document.querySelector('.popup__elements-save-button')
   elementsSaveBtn.setAttribute('disabled', true);
   elementsSaveBtn.classList.add('popup__save-button_disabled');
