@@ -27,13 +27,7 @@ export default class Card {
   }
 
   isLiked() {
-    this._element = this._getTemplate();
-    const cardLikesColor = this._element.querySelector('.element__heart');
-    this._likes.some(element => {
-      if(element._id.includes(this._userID)){
-        cardLikesColor.classList.add('element__heart_active');
-      }
-    });
+    return !!this._likes.find(like => like._id === this._userId);
   }
 
   _getTemplate() {

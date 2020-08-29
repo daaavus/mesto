@@ -47,33 +47,6 @@ const popupWithFormProfile = new PopupWithForm(popup, {
   }
 })
 
-const popupWithFormCards = new PopupWithForm(elementsPopup, {
-  handleFormSubmit: () => {
-    const cardItem = {
-      name: mestoInput.value,
-      link: linkInput.value
-    };
-    render(cardItem);
-  }
-})
-
-popupDeleteCard.setEventListeners()
-popupWithImage.setEventListeners()
-popupWithFormCards.setEventListeners()
-popupWithFormProfile.setEventListeners()
-
-formAddValidation.enableValidation();
-formImageAddValidation.enableValidation();
-
-addBtn.addEventListener('click', () => {
-  popupWithFormCards.open()
-})
-addBtn.addEventListener('click', setValidityForm);
-addBtn.addEventListener('click', () => {
-  elementsPopupSave.reset();
-});
-editBtn.addEventListener('click', handleEditClick);
-
 Promise.all([
   api.getProfileInfo(),
   api.getInitialCards()
@@ -86,15 +59,15 @@ Promise.all([
       profileJob.textContent = profileInfo.about;
       const cardList = new Section({
         items: cards,
-        renderer: (cards) => {
-          render(cards)
+        renderer: (item) => {
+          render(item)
         }
       }, cardsContainer)
 
       const render = (item) => {
         const card = new Card({
           data: item,
-          myID: "f93f5c05e813ba9459ed9d0e",
+          myID: profileInfo._id,
           handleCardClick: () => {
             popupWithImage.open(item, imagePopupImage, imagePopupCaption)
           },
@@ -123,11 +96,39 @@ Promise.all([
                 .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
                 .finally(() => renderLoading(false))
             })
+            console.log(card)
           }
         },
         '#card-template')
         cardList.addItem(card.generateCard())
       }
       cardList.renderItems()
-    }
-  )
+
+      const popupWithFormCards = new PopupWithForm(elementsPopup, {
+        handleFormSubmit: () => {
+          api.addCard(mestoInput, linkInput)
+          const cardItem = {
+            name: mestoInput.value,
+            link: linkInput.value
+          };
+          render(cardItem);
+        }
+      })
+      popupWithFormCards.setEventListeners()
+      addBtn.addEventListener('click', () => {
+        popupWithFormCards.open()
+      })
+
+      popupDeleteCard.setEventListeners()
+      popupWithImage.setEventListeners()
+      popupWithFormProfile.setEventListeners()
+
+      formAddValidation.enableValidation();
+      formImageAddValidation.enableValidation();
+
+      addBtn.addEventListener('click', setValidityForm);
+      addBtn.addEventListener('click', () => {
+        elementsPopupSave.reset();
+      });
+      editBtn.addEventListener('click', handleEditClick);
+    })

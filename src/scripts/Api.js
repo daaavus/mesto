@@ -31,7 +31,7 @@ export default class Api {
     });
   }
   addCard(firstInput, secondInput) {
-    fetch(`${this.baseUrl}/cards` , {
+    return fetch(`${this.baseUrl}/cards` , {
       method: 'POST',
       headers: {
         authorization: '9dc23caf-3e9f-4f59-bf1d-09412a94602c',
@@ -42,6 +42,7 @@ export default class Api {
         link: secondInput.value
       })
     })
+    .then(res => res.json())
   }
   likeCard(id) {
     return fetch(`${this.baseUrl}/cards/likes/${id}`, {
