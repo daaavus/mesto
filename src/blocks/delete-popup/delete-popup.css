@@ -1,0 +1,17 @@
+@import url('./__close-button/delete-popup__close-button.css');
+@import url('./__container/delete-popup__container.css');
+@import url('./__save-button/delete-popup__save-button.css');
+
+.delete-popup {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
