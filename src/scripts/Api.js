@@ -5,31 +5,17 @@ export default class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
-  getProfileInfo(avatarImage, nameInfo, jobInfo) {
-    fetch(`${this.baseUrl}/users/me` ,{
+  getProfileInfo() {
+    return fetch(`${this.baseUrl}/users/me` ,{
       headers: this.headers
     })
       .then(res => res.json())
-      .then((data) => {
-        avatarImage.src = data.avatar;
-        nameInfo.textContent = data.name;
-        jobInfo.textContent = data.about;
-      })
   }
-  getInitialCards(renderFunction) {
+  getInitialCards() {
     return fetch(`${this.baseUrl}/cards` , {
       headers: this.headers
     })
-      .then(res => res.json())
-      .then((data) => {
-      const cardList = new Section({
-        items: data,
-        renderer: (item) => {
-          renderFunction(item)
-        }
-      })
-      cardList.renderItems()
-      })
+      .then(data => data.json())
   }
   updateProfileInfo(firstInput, secondInput) {
     fetch(`${this.baseUrl}/users/me` , {
@@ -56,6 +42,13 @@ export default class Api {
         link: secondInput.value
       })
     })
+  }
+  likeCard(id) {
+    return fetch(`${this.baseUrl}/cards/likes/${id}`, {
+      method: 'PUT',
+      headers: this.headers
+      })
+      .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
   }
   deleteCard(id) {
     return fetch(`${this.baseUrl}/cards/${id}`, {

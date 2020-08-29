@@ -1,5 +1,5 @@
 export default class Card {
-  constructor ({data, myID, cardSelector, handleCardClick, handleLikeClick, handleTrashClick}) {
+  constructor ({data, myID, handleCardClick, handleLikeClick, handleTrashClick}, cardSelector) {
     this._text = data.name;
     this._image = data.link;
     this._likes = data.likes;
@@ -17,12 +17,23 @@ export default class Card {
     return this._likes.length;
   }
 
+  likeCard = (e) => {
+    e.target.classList.toggle('element__heart_active')
+  }
+
   updateLikes(newLikes) {
     this._likes = newLikes;
+
   }
 
   isLiked() {
-    return !!this._likes.find(like => like._id === this._userId);
+    this._element = this._getTemplate();
+    const cardLikesColor = this._element.querySelector('.element__heart');
+    this._likes.some(element => {
+      if(element._id.includes(this._userID)){
+        cardLikesColor.classList.add('element__heart_active');
+      }
+    });
   }
 
   _getTemplate() {
