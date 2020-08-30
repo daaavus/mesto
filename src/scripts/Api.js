@@ -51,6 +51,13 @@ export default class Api {
       })
       .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
   }
+  deleteLike(id) {
+    return fetch(`${this.baseUrl}/cards/likes/${id}`, {
+      method: 'DELETE',
+      headers: this.headers
+      })
+      .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
+  }
   deleteCard(id) {
     return fetch(`${this.baseUrl}/cards/${id}`, {
       method: 'DELETE',
@@ -59,6 +66,17 @@ export default class Api {
         'Content-Type': 'application/json'
       },
     })
-    .then((err) => {console.log(err)})
+  }
+  updateAvatar(input) {
+    fetch(`${this.baseUrl}/users/me/avatar` , {
+      method: 'PATCH',
+      headers: {
+        authorization: '9dc23caf-3e9f-4f59-bf1d-09412a94602c',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        avatar: input.value
+      })
+    });
   }
 }

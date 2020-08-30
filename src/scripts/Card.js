@@ -11,6 +11,9 @@ export default class Card {
     this._handleLikeClick = handleLikeClick;
     this._handleTrashClick = handleTrashClick;
   }
+  updateLikes(item){
+    this._element.querySelectorAll('.element__like-count').textContent = item.likes.length
+  }
 
   addLike(item) {
     this._element.querySelector('.element__like-count').textContent = (item.likes.length+=1)
@@ -22,14 +25,6 @@ export default class Card {
 
   likeCard () {
     this._element.querySelector('.element__heart').classList.toggle('element__heart_active');
-  }
-
-  updateLikes(newLikes) {
-    return this._likes = newLikes;
-  }
-
-  isLiked() {
-    return !!this._likes.find(like => like._id === this._userId);
   }
 
   _getTemplate() {
@@ -44,7 +39,6 @@ export default class Card {
 
   _setEventListeners() {
     this._element.querySelector('.element__heart').addEventListener('click', this._handleLikeClick)
-    this._element.querySelector('.element__trash').addEventListener('click', this._handleTrashClick)
     this._element.querySelector('.element__pic').addEventListener('click', this._handleCardClick)
   }
 
@@ -54,6 +48,14 @@ export default class Card {
 
     this._element.querySelector('.element__pic').src = this._image;
     this._element.querySelector('.element__title').textContent = this._text;
+    const cardLikes = this._element.querySelector('.element__like-count');
+    cardLikes.textContent = this._likes.length;
+    if(this._ownerID === this._userID) {
+      this._element.insertAdjacentHTML('beforeend', '<button class="element__trash" type="button"></button>');
+      this._element.querySelector('.element__trash').addEventListener('click', this._handleTrashClick)
+    } else {
+
+    }
 
     return this._element;
   }
