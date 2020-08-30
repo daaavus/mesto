@@ -12,6 +12,8 @@
   background-color: unset;
 }
 
+.element__trash:active, .element__trash:focus { outline: none; }
+
 .element__trash:hover {
   opacity: .6;
 }

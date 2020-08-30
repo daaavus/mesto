@@ -1,14 +1,14 @@
 import Card from '../scripts/Card.js';
 import { popup, imagePopup, elementsPopup, profileJob, profileName, nameInput, jobInput, imagePopupImage,
-  imagePopupCaption, setValidityForm, validationConfig, avatarImg, avatarPopup, saveBtn, } from '../scripts/Utils.js';
+  imagePopupCaption, setValidityForm, validationConfig, avatarImg, avatarPopup, deletePopup, saveBtn } from '../scripts/Utils.js';
 import { FormValidator } from '../scripts/FormValidator.js'
 import PopupWithImage from '../scripts/PopupWithImage.js'
 import '../pages/index.css';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import UserInfo from '../scripts/UserInfo.js';
 import Api from '../scripts/Api.js'
-import PopupDeleteCard from '../scripts/PopupDeleteCard.js'
 import Section from '../scripts/Section.js';
+import PopupDeleteCard from '../scripts/PopupDeleteCard.js';
 
 const editBtn = document.querySelector('.profile__edit-button');
 const cardsContainer = document.querySelector('.elements');
@@ -19,11 +19,9 @@ const elementsPopupSave = elementsPopup.querySelector('.elements__popup-containe
 const validationFormSelector = document.querySelector('.popup__container');
 const imageValidationFormSelector = document.querySelector('.elements__popup-container');
 const avatarValidationFormSelector = document.querySelector('.avatar__popup-container')
-const deletePopup = document.querySelector('.delete-popup')
 const userInfo = new UserInfo({profileName, profileJob});
 const formAddValidation = new FormValidator(validationConfig, validationFormSelector);
 const formImageAddValidation = new FormValidator(validationConfig, imageValidationFormSelector);
-const popupDeleteCard = new PopupDeleteCard(deletePopup)
 const popupWithImage = new PopupWithImage(imagePopup)
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-14',
@@ -31,6 +29,9 @@ const api = new Api({
     authorization: '9dc23caf-3e9f-4f59-bf1d-09412a94602c'
   }
 })
+
+const deleteCardPopup = new PopupDeleteCard(deletePopup)
+deleteCardPopup.setEventListeners()
 
 function handleEditClick () {
   popupWithFormProfile.open();
@@ -75,26 +76,27 @@ Promise.all([
             const isLiked = card.isLiked()
             if(isLiked) {
               api.deleteLike(item._id)
+                .then(() => {card.likeCard()})
+                .then(() => {card.removeLike(item)})
                 .then(item => card.updateLikes(item.likes))
-                .then(() => {card.likeCard})
                 .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
             } else {
               api.likeCard(item._id)
+              .then(() => {card.likeCard()})
+              .then(() => {card.addLike(item)})
               .then(item => card.updateLikes(item.likes))
-              .then(() => {card.likeCard})
               .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
             }
           },
           handleTrashClick: () => {
-            popupDeleteCard.open()
-            popupDeleteCard.setSubmitHandler(() => {
+            deleteCardPopup.open()
+            deleteCardPopup.setSubmitHandler(() => {
               api.deleteCard(item._id)
                 .then(() => {
                   card.removeCard()
-                  popupDeleteCard.close()
+                  deleteCardPopup.close()
                 })
                 .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
-                .finally(() => renderLoading(false))
             })
             console.log(card)
           }
@@ -107,11 +109,10 @@ Promise.all([
       const popupWithFormCards = new PopupWithForm(elementsPopup, {
         handleFormSubmit: () => {
           api.addCard(mestoInput, linkInput)
-          const cardItem = {
-            name: mestoInput.value,
-            link: linkInput.value
-          };
-          render(cardItem);
+          .then((item) => {
+            render(item);
+          })
+          .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
         }
       })
       popupWithFormCards.setEventListeners()
@@ -119,7 +120,6 @@ Promise.all([
         popupWithFormCards.open()
       })
 
-      popupDeleteCard.setEventListeners()
       popupWithImage.setEventListeners()
       popupWithFormProfile.setEventListeners()
 

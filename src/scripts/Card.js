@@ -10,20 +10,22 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleTrashClick = handleTrashClick;
-
   }
 
-  _getLikesCount() {
-    return this._likes.length;
+  addLike(item) {
+    this._element.querySelector('.element__like-count').textContent = (item.likes.length+=1)
   }
 
-  likeCard = (e) => {
-    e.target.classList.toggle('element__heart_active')
+  removeLike(item) {
+    this._element.querySelector('.element__like-count').textContent = (item.likes.length-=1)
+  }
+
+  likeCard () {
+    this._element.querySelector('.element__heart').classList.toggle('element__heart_active');
   }
 
   updateLikes(newLikes) {
-    this._likes = newLikes;
-
+    return this._likes = newLikes;
   }
 
   isLiked() {
@@ -31,12 +33,7 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document
-    .querySelector(this._cardSelector)
-    .content
-    .querySelector('.element')
-    .cloneNode(true);
-
+    const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
     return cardElement;
   }
 
@@ -46,18 +43,9 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector('.element__heart').addEventListener('click', () => {
-      this._handleLikeClick();
-    })
-
-    this._element.querySelector('.element__trash').addEventListener('click', () => {
-      this._handleTrashClick();
-    })
-
-    this._element.querySelector('.element__pic').addEventListener('click', () => {
-
-      this._handleCardClick()
-    })
+    this._element.querySelector('.element__heart').addEventListener('click', this._handleLikeClick)
+    this._element.querySelector('.element__trash').addEventListener('click', this._handleTrashClick)
+    this._element.querySelector('.element__pic').addEventListener('click', this._handleCardClick)
   }
 
   generateCard () {

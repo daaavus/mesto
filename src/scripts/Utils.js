@@ -2,6 +2,7 @@ export const popup = document.querySelector('.popup');
 export const imagePopup = document.querySelector('.image-popup');
 export const elementsPopup = document.querySelector('.elements__popup');
 export const avatarPopup = document.querySelector('.avatar-popup')
+export const deletePopup = document.querySelector('.delete-popup')
 export const saveBtn = document.querySelector('.popup__save-button');
 export const nameInput = document.querySelector('.popup__name');
 export const jobInput = document.querySelector('.popup__info');
