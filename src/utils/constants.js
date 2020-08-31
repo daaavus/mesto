@@ -11,17 +11,14 @@ export const profileJob = document.querySelector('.profile__subtitle');
 export const imagePopupImage = imagePopup.querySelector('.image-popup__image');
 export const imagePopupCaption = imagePopup.querySelector('.image-popup__caption');
 export const avatarImg = document.querySelector('.profile__avatar')
-
-export const validationConfig = {
-  formElement: '#popupContainer',
-  inputElement: '.input',
-  inputElementError: 'input_error_active',
-  buttonElement: '.popup__save-button',
-  buttonElementInactive: 'popup__save-button_disabled'
-}
-
-export function setValidityForm () { //я тут присваиваю кнопке свойства при открытии второго попапа, это не валидация :)
-  const elementsSaveBtn = document.querySelector('.popup__elements-save-button')
-  elementsSaveBtn.setAttribute('disabled', true);
-  elementsSaveBtn.classList.add('popup__save-button_disabled');
-}
+export const cardTemplate = document.querySelector('#card-template');
+export const avatarInput = document.querySelector('.popup__avatar-link')
+export const avatarPopupOpenImage = document.querySelector('.profile__avatar-container');
+export const editBtn = document.querySelector('.profile__edit-button');
+export const cardsContainer = document.querySelector('.elements');
+export const mestoInput = elementsPopup.querySelector('.popup__mesto');
+export const addBtn = document.querySelector('.profile__add-button')
+export const linkInput = elementsPopup.querySelector('.popup__link');
+export const elementsPopupSave = elementsPopup.querySelector('.elements__popup-container');
+export const validationFormSelector = document.querySelector('.popup__container');
+export const imageValidationFormSelector = document.querySelector('.elements__popup-container');

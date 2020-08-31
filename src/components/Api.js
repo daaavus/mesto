@@ -1,5 +1,3 @@
-import Section from './Section.js';
-
 export default class Api {
   constructor({baseUrl, headers}) {
     this.baseUrl = baseUrl;
@@ -9,13 +7,25 @@ export default class Api {
     return fetch(`${this.baseUrl}/users/me` ,{
       headers: this.headers
     })
-      .then(res => res.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          return Promise.reject(res.status)
+        }
+      })
   }
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards` , {
       headers: this.headers
     })
-      .then(data => data.json())
+      .then((data) => {
+        if(data.ok) {
+          return data.json()
+        } else {
+          return Promise.reject(data.status)
+        }
+      })
   }
   updateProfileInfo(firstInput, secondInput) {
     fetch(`${this.baseUrl}/users/me` , {
@@ -42,21 +52,25 @@ export default class Api {
         link: secondInput.value
       })
     })
-    .then(res => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json()
+      } else {
+        return Promise.reject(res.status)
+      }
+    })
   }
   likeCard(id) {
     return fetch(`${this.baseUrl}/cards/likes/${id}`, {
       method: 'PUT',
       headers: this.headers
       })
-      .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
   }
   deleteLike(id) {
     return fetch(`${this.baseUrl}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: this.headers
       })
-      .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
   }
   deleteCard(id) {
     return fetch(`${this.baseUrl}/cards/${id}`, {

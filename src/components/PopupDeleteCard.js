@@ -13,7 +13,4 @@ export default class PopupDeleteCard extends Popup {
       this.setSubmitHandler();
     })
   }
-  setSubmitHandler= () => {
-
-  }
 }

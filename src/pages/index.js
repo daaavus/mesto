@@ -1,26 +1,23 @@
-import Card from '../scripts/Card.js';
-import { popup, imagePopup, elementsPopup, profileJob, profileName, nameInput, jobInput, imagePopupImage,
-  imagePopupCaption, setValidityForm, validationConfig, avatarImg, avatarPopup, deletePopup, saveBtn } from '../scripts/Utils.js';
-import { FormValidator } from '../scripts/FormValidator.js'
-import PopupWithImage from '../scripts/PopupWithImage.js'
-import '../pages/index.css';
-import PopupWithForm from '../scripts/PopupWithForm.js';
-import UserInfo from '../scripts/UserInfo.js';
-import Api from '../scripts/Api.js'
-import Section from '../scripts/Section.js';
-import PopupDeleteCard from '../scripts/PopupDeleteCard.js';
-import AvatarPopup from '../scripts/AvatarPopup.js'
+import Card from '../components/Card.js';
+import { popup, imagePopup, elementsPopup, profileJob, profileName, nameInput,
+        jobInput,imagePopupImage, imagePopupCaption, avatarImg,avatarPopup,
+        deletePopup, cardTemplate, avatarInput, avatarPopupOpenImage,editBtn,
+        cardsContainer, mestoInput, addBtn, linkInput, elementsPopupSave,
+        validationFormSelector, imageValidationFormSelector
+} from '../utils/constants.js';
 
-const avatarInput = document.querySelector('.popup__avatar-link')
-const avatarPopupOpenImage = document.querySelector('.profile__avatar-container');
-const editBtn = document.querySelector('.profile__edit-button');
-const cardsContainer = document.querySelector('.elements');
-const mestoInput = elementsPopup.querySelector('.popup__mesto');
-const addBtn = document.querySelector('.profile__add-button')
-const linkInput = elementsPopup.querySelector('.popup__link');
-const elementsPopupSave = elementsPopup.querySelector('.elements__popup-container');
-const validationFormSelector = document.querySelector('.popup__container');
-const imageValidationFormSelector = document.querySelector('.elements__popup-container');
+import { setValidityForm, renderLoading, validationConfig } from '../utils/Utils.js'
+
+import { FormValidator } from '../components/FormValidator.js'
+import PopupWithImage from '../components/PopupWithImage.js'
+import '../pages/index.css';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js'
+import Section from '../components/Section.js';
+import PopupDeleteCard from '../components/PopupDeleteCard.js';
+import AvatarPopup from '../components/AvatarPopup.js'
+
 const userInfo = new UserInfo({profileName, profileJob});
 const formAddValidation = new FormValidator(validationConfig, validationFormSelector);
 const formImageAddValidation = new FormValidator(validationConfig, imageValidationFormSelector);
@@ -32,20 +29,12 @@ const api = new Api({
   }
 })
 
-const renderLoading = (isLoading) => {
-  if(isLoading) {
-    saveBtn.textContent = 'Сохранение...'
-
-  } else {
-
-  }
-}
-
 const changeAvatarPopup = new AvatarPopup(avatarPopup, {
   handleFormSubmit: () => {
     renderLoading(true)
     avatarImg.src = avatarInput.value;
     api.updateAvatar(avatarInput)
+      .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
       .finally(() => {renderLoading(false)})
   }
 })
@@ -57,6 +46,7 @@ const deleteCardPopup = new PopupDeleteCard(deletePopup, {
   handleFormSubmit: () => {
     avatarImg.src = avatarInput.value;
     api.updateAvatar(avatarInput)
+      .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
   }
 })
 deleteCardPopup.setEventListeners()
@@ -127,7 +117,7 @@ Promise.all([
             }
           }
         },
-        '#card-template')
+        cardTemplate)
         cardList.addItem(card.generateCard())
       }
       cardList.renderItems()

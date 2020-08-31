@@ -28,7 +28,7 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
+    const cardElement = (this._cardSelector).content.querySelector('.element').cloneNode(true);
     return cardElement;
   }
 
@@ -40,6 +40,7 @@ export default class Card {
   _setEventListeners() {
     this._element.querySelector('.element__heart').addEventListener('click', this._handleLikeClick)
     this._element.querySelector('.element__pic').addEventListener('click', this._handleCardClick)
+    this._element.querySelector('.element__trash').addEventListener('click', this._handleTrashClick)
   }
 
   generateCard () {
@@ -51,12 +52,8 @@ export default class Card {
     const cardLikes = this._element.querySelector('.element__like-count');
     cardLikes.textContent = this._likes.length;
     if(this._ownerID === this._userID) {
-      this._element.insertAdjacentHTML('beforeend', '<button class="element__trash" type="button"></button>');
-      this._element.querySelector('.element__trash').addEventListener('click', this._handleTrashClick)
-    } else {
-
+      this._element.querySelector('.element__trash').classList.remove('hidden')
     }
-
     return this._element;
   }
 
