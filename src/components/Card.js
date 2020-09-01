@@ -16,11 +16,12 @@ export default class Card {
   }
 
   addLike(item) {
-    this._element.querySelector('.element__like-count').textContent = (item.likes.length+=1)
+    const likeCounter = this._element.querySelector('.element__like-count')
+    likeCounter.textContent = (item.likes.length+=1)
   }
 
   removeLike(item) {
-    this._element.querySelector('.element__like-count').textContent = (item.likes.length-=1)
+    likeCounter.textContent = (item.likes.length-=1)
   }
 
   likeCard () {

@@ -3,7 +3,7 @@ import { popup, imagePopup, elementsPopup, profileJob, profileName, nameInput,
         jobInput,imagePopupImage, imagePopupCaption, avatarImg,avatarPopup,
         deletePopup, cardTemplate, avatarInput, avatarPopupOpenImage,editBtn,
         cardsContainer, mestoInput, addBtn, linkInput, elementsPopupSave,
-        validationFormSelector, imageValidationFormSelector
+        validationFormSelector, imageValidationFormSelector,
 } from '../utils/constants.js';
 
 import { setValidityForm, renderLoading, validationConfig } from '../utils/Utils.js'
