@@ -11,17 +11,18 @@ export default class Card {
     this._handleLikeClick = handleLikeClick;
     this._handleTrashClick = handleTrashClick;
   }
-  updateLikes(item){
-    this._element.querySelectorAll('.element__like-count').textContent = item.likes.length
+  updateLikes(){
+    this._element.querySelectorAll('.element__like-count').textContent = this._likes.length
   }
 
-  addLike(item) {
+  addLike() {
     const likeCounter = this._element.querySelector('.element__like-count')
-    likeCounter.textContent = (item.likes.length+=1)
+    likeCounter.textContent = (this._likes.length+=1)
   }
 
-  removeLike(item) {
-    likeCounter.textContent = (item.likes.length-=1)
+  removeLike() {
+    const likeCounter = this._element.querySelector('.element__like-count')
+    likeCounter.textContent = (this._likes.length-=1)
   }
 
   likeCard () {

@@ -3,31 +3,31 @@ import { popup, imagePopup, elementsPopup, profileJob, profileName, nameInput,
         jobInput,imagePopupImage, imagePopupCaption, avatarImg,avatarPopup,
         deletePopup, cardTemplate, avatarInput, avatarPopupOpenImage,editBtn,
         cardsContainer, mestoInput, addBtn, linkInput, elementsPopupSave,
-        validationFormSelector, imageValidationFormSelector,
+        validationFormSelector, imageValidationFormSelector, saveBtn,
 } from '../utils/constants.js';
 
-import { setValidityForm, renderLoading, validationConfig } from '../utils/Utils.js'
+import { setValidityForm, renderLoading, validationConfig } from '../utils/Utils.js';
 
-import { FormValidator } from '../components/FormValidator.js'
-import PopupWithImage from '../components/PopupWithImage.js'
+import { FormValidator } from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import '../pages/index.css';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import Api from '../components/Api.js'
+import Api from '../components/Api.js';
 import Section from '../components/Section.js';
 import PopupDeleteCard from '../components/PopupDeleteCard.js';
-import AvatarPopup from '../components/AvatarPopup.js'
+import AvatarPopup from '../components/AvatarPopup.js';
 
 const userInfo = new UserInfo({profileName, profileJob});
 const formAddValidation = new FormValidator(validationConfig, validationFormSelector);
 const formImageAddValidation = new FormValidator(validationConfig, imageValidationFormSelector);
-const popupWithImage = new PopupWithImage(imagePopup)
+const popupWithImage = new PopupWithImage(imagePopup);
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-14',
   headers: {
     authorization: '9dc23caf-3e9f-4f59-bf1d-09412a94602c'
   }
-})
+});
 
 const changeAvatarPopup = new AvatarPopup(avatarPopup, {
   handleFormSubmit: () => {
@@ -37,10 +37,10 @@ const changeAvatarPopup = new AvatarPopup(avatarPopup, {
       .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
       .finally(() => {renderLoading(false)})
   }
-})
-changeAvatarPopup.setEventListeners()
+});
+changeAvatarPopup.setEventListeners();
 
-avatarPopupOpenImage.addEventListener('click', () => {changeAvatarPopup.open()})
+avatarPopupOpenImage.addEventListener('click', () => {changeAvatarPopup.open()});
 
 const deleteCardPopup = new PopupDeleteCard(deletePopup, {
   handleFormSubmit: () => {
@@ -48,15 +48,16 @@ const deleteCardPopup = new PopupDeleteCard(deletePopup, {
     api.updateAvatar(avatarInput)
       .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
   }
-})
-deleteCardPopup.setEventListeners()
+});
+deleteCardPopup.setEventListeners();
 
 function handleEditClick () {
   popupWithFormProfile.open();
   const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   jobInput.value = data.info;
-}
+  saveBtn.classList.remove('popup__save-button_disabled')
+};
 
 const popupWithFormProfile = new PopupWithForm(popup, {
   handleFormSubmit: () => {
@@ -66,7 +67,7 @@ const popupWithFormProfile = new PopupWithForm(popup, {
     popupWithFormProfile.close();
     renderLoading(false)
   }
-})
+});
 
 Promise.all([
   api.getProfileInfo(),
@@ -96,12 +97,12 @@ Promise.all([
             if(event.target.classList.contains('element__heart_active')) {
               api.deleteLike(item._id)
                 .then(() => {card.likeCard()})
-                .then(() => {card.removeLike(item)})
+                .then(() => {card.removeLike()})
                 .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
             } else {
               api.likeCard(item._id)
               .then(() => {card.likeCard()})
-              .then(() => {card.addLike(item)})
+              .then(() => {card.addLike()})
               .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
             }
           },
@@ -119,8 +120,8 @@ Promise.all([
         },
         cardTemplate)
         cardList.addItem(card.generateCard())
-      }
-      cardList.renderItems()
+      };
+      cardList.renderItems();
 
       const popupWithFormCards = new PopupWithForm(elementsPopup, {
         handleFormSubmit: () => {
@@ -132,14 +133,14 @@ Promise.all([
           .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
           .finally(() => {renderLoading(false)})
         }
-      })
+      });
       popupWithFormCards.setEventListeners()
       addBtn.addEventListener('click', () => {
         popupWithFormCards.open()
-      })
+      });
 
-      popupWithImage.setEventListeners()
-      popupWithFormProfile.setEventListeners()
+      popupWithImage.setEventListeners();
+      popupWithFormProfile.setEventListeners();
 
       formAddValidation.enableValidation();
       formImageAddValidation.enableValidation();
@@ -150,4 +151,4 @@ Promise.all([
         elementsPopupSave.reset();
       });
       editBtn.addEventListener('click', handleEditClick);
-    })
+    });
