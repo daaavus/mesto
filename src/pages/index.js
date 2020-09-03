@@ -56,7 +56,8 @@ function handleEditClick () {
   const data = userInfo.getUserInfo();
   nameInput.value = data.name;
   jobInput.value = data.info;
-  saveBtn.classList.remove('popup__save-button_disabled')
+  saveBtn.classList.remove('popup__save-button_disabled');
+  saveBtn.removeAttribute('disabled');
 };
 
 const popupWithFormProfile = new PopupWithForm(popup, {
@@ -68,6 +69,7 @@ const popupWithFormProfile = new PopupWithForm(popup, {
     renderLoading(false)
   }
 });
+renderLoading(false)
 
 Promise.all([
   api.getProfileInfo(),

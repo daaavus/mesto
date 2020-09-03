@@ -11,7 +11,8 @@ export const validationConfig = {
 export const renderLoading = (isLoading) => {
   if(isLoading) {
     saveBtn.textContent = 'Сохранение...'
-
+  } else {
+    saveBtn.textContent = 'Сохранить'
   }
 }
 
