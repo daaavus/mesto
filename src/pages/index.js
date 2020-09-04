@@ -129,11 +129,9 @@ Promise.all([
         handleFormSubmit: () => {
           renderLoading(true)
           api.addCard(mestoInput, linkInput)
-          .then((item) => {
-            render(item);
-          })
-          .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
-          .finally(() => {renderLoading(false)})
+            .then((item) => {render(item)})
+            .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
+            .finally(() => {renderLoading(false)})
         }
       });
       popupWithFormCards.setEventListeners()

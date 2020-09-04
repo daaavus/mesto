@@ -29,7 +29,7 @@ export default class Api {
       })
   }
   updateProfileInfo(firstInput, secondInput) {
-    fetch(`${this.baseUrl}/users/me` , {
+    return fetch(`${this.baseUrl}/users/me` , {
       method: 'PATCH',
       headers: {
         authorization: '9dc23caf-3e9f-4f59-bf1d-09412a94602c',
@@ -81,7 +81,7 @@ export default class Api {
     .then(this.checkResponce)
   }
   updateAvatar(input) {
-    fetch(`${this.baseUrl}/users/me/avatar` , {
+    return fetch(`${this.baseUrl}/users/me/avatar` , {
       method: 'PATCH',
       headers: {
         authorization: '9dc23caf-3e9f-4f59-bf1d-09412a94602c',
