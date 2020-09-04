@@ -3,17 +3,18 @@ export default class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
+  checkResponce(res) {
+    if (res.ok) {
+      return res.json()
+    } else {
+      return Promise.reject(res.status)
+    }
+  }
   getProfileInfo() {
     return fetch(`${this.baseUrl}/users/me` ,{
       headers: this.headers
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          return Promise.reject(res.status)
-        }
-      })
+    .then(this.checkResponce)
   }
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards` , {
@@ -38,7 +39,8 @@ export default class Api {
         name: firstInput.value,
         about: secondInput.value
       })
-    });
+    })
+    .then(this.checkResponce)
   }
   addCard(firstInput, secondInput) {
     return fetch(`${this.baseUrl}/cards` , {
@@ -52,25 +54,21 @@ export default class Api {
         link: secondInput.value
       })
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        return Promise.reject(res.status)
-      }
-    })
+    .then(this.checkResponce)
   }
   likeCard(id) {
     return fetch(`${this.baseUrl}/cards/likes/${id}`, {
       method: 'PUT',
       headers: this.headers
       })
+      .then(this.checkResponce)
   }
   deleteLike(id) {
     return fetch(`${this.baseUrl}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: this.headers
       })
+      .then(this.checkResponce)
   }
   deleteCard(id) {
     return fetch(`${this.baseUrl}/cards/${id}`, {
@@ -80,6 +78,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
     })
+    .then(this.checkResponce)
   }
   updateAvatar(input) {
     fetch(`${this.baseUrl}/users/me/avatar` , {
@@ -91,6 +90,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: input.value
       })
-    });
+    })
+    .then(this.checkResponce)
   }
 }

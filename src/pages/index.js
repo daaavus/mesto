@@ -64,12 +64,12 @@ const popupWithFormProfile = new PopupWithForm(popup, {
   handleFormSubmit: () => {
     renderLoading(true)
     userInfo.setUserInfo(nameInput, jobInput);
-    api.updateProfileInfo(nameInput, jobInput);
+    api.updateProfileInfo(nameInput, jobInput)
+      .catch(err => {`Что-то пошло не так ヾ(。＞＜)シ${console.log(err)}`})
+      .finally(() => {renderLoading(false)})
     popupWithFormProfile.close();
-    renderLoading(false)
   }
 });
-renderLoading(false)
 
 Promise.all([
   api.getProfileInfo(),
