@@ -1,4 +1,4 @@
-import { saveBtn} from './constants.js'
+import { saveBtn, elementsSaveBtn, avatarSaveBtn } from './constants.js'
 
 export const validationConfig = {
   formElement: '#popupContainer',
@@ -11,8 +11,12 @@ export const validationConfig = {
 export const renderLoading = (isLoading) => {
   if(isLoading) {
     saveBtn.textContent = 'Сохранение...'
+    elementsSaveBtn.textContent = 'Сохранение...'
+    avatarSaveBtn.textContent = 'Сохранение...'
   } else {
     saveBtn.textContent = 'Сохранить'
+    elementsSaveBtn.textContent = 'Сохранить'
+    avatarSaveBtn.textContent = 'Сохранить'
   }
 }
 
