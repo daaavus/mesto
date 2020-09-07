@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+<link href="main.css" rel="stylesheet"></head>
+<body class="body">
+  <div class="page">
+
+    <header class="header">
+      <img src="./src/images/logo.svg" class="header__logo" alt="Логотип Mesto Russia">
+    </header>
+
+    <main class="content">
+
+      <section class="profile">
+        <div class="profile__avatar-container">
+          <img class="profile__avatar" alt="Аватар">
+          <div class="profile__pen-container">
+            <img class="profile__pen" src="../src/images/avatar-pen.svg">
+          </div>
+        </div>
+        <div class="profile__info">
+          <div class="profile__container">
+            <h1 class="profile__title"></h1>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <h5 class="profile__subtitle"></h5>
+        </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+
+      <ul class="elements">
+
+      </ul>
+
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <div class="popup">
+      <form class="popup__container" id="popupContainer" novalidate>
+        <button class="popup__close-button" type="button" id="popup_close"></button>
+        <fieldset class="popup__content">
+          <p class="popup__title">Редактировать профиль</p>
+
+          <input class="popup__name input" placeholder="ФИО" type="text" id='input-name'
+          minlength="2" maxlength="40" pattern="^[a-zA-Z-А-Яа-яЁё\s]+$" required>
+          <span class='input-error' id="input-name-error"></span>
+
+          <input class="popup__info input" placeholder="О себе" type="text" id ='input-job' minlength="2"
+          maxlength="200" required>
+          <span class='input-error' id="input-job-error"></span>
+
+        </fieldset>
+        <button class="popup__save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+
+    <div class="elements__popup">
+      <form class="popup__container elements__popup-container" id="popupContainer" novalidate>
+        <button class="popup__close-elements-button" type="button" id="popup_close"></button>
+        <fieldset class="popup__content">
+          <p class="popup__title">Новое место</p>
+
+          <input class="popup__mesto input" placeholder="Название"
+          type="text" minlength="1" maxlength="30" id='input-place' required>
+          <span class='input-error' id="input-place-error"></span>
+
+          <input class="popup__link input" placeholder="Ссылка на картинку"
+          type='url' id='input-url' required>
+          <span class='input-error' id="input-url-error"></span>
+
+        </fieldset>
+        <button class="popup__save-button popup__elements-save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+
+    <div class="image-popup">
+      <form class="image-popup__container">
+        <button type="button" class="image-popup__close-button" id="popup_close"></button>
+        <figure class="image-popup__figure">
+            <img class="image-popup__image" src="#" alt="картинка">
+            <figcaption class="image-popup__caption"></figcaption>
+        </figure>
+      </form>
+    </div>
+
+    <div class="avatar-popup">
+      <form class="avatar__popup-container" id="popupContainer" novalidate>
+        <button class="avatar-popup__close-button" type="button" id="popup_close"></button>
+        <fieldset class="popup__content">
+          <p class="popup__title">Обновить аватар</p>
+
+          <input class="popup__avatar-link input" placeholder="Ссылка на картинку" type="url"
+          id='input-name' required>
+
+          <span class='input-error' id="input-link-error"></span>
+
+        </fieldset>
+        <button class="avatar-popup__save-button popup__save-button" type="submit">Сохранить</button>
+      </form>
+    </div>
+
+    <div class="delete-popup">
+      <form class="delete-popup__container" id="popupContainer" novalidate>
+        <button class="delete-popup__close-button" type="button" id="popup_close"></button>
+        <fieldset class="popup__content">
+          <p class="popup__title">Вы уверены?</p>
+        </fieldset>
+        <button class="popup__save-button delete-popup__save-button" type="submit">Да</button>
+      </form>
+    </div>
+
+  </div>
+
+  <template id="card-template">
+    <li class="element">
+      <img class="element__pic" alt="картинка" src="123">
+      <h4 class="element__title"></h4>
+      <div class="element__like-container">
+        <button class="element__heart" type="button"></button>
+        <p class="element__like-count">0</p>
+      </div>
+      <button class="element__trash hidden" type="button"></button>
+    </li>
+  </template>
+
+<script src="main.js"></script></body>
+
+</html>
